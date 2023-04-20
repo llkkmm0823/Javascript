@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>24_ImageControll12.html</title>
+    <style type="text/css">
+    #view{position : relative; width: 600px; height: 400px; margin:0 auto;border:2px solid blue;overflow: hidden;}
+    #imgs{position : absolute; width: 4800px; height: 400px; left:0; top:0; border:1px dashed red;transition:0.3s;}
+    img{width: 600px;height: 400px;}
+    #lbutton{position:absolute;width: 50px;height: 50px;background-image:url(images/ico_movie_171115.png); border-radius: 50%;left:0;bottom:0;overflow: hidden; background-position: -60px -460px;}
+    #rbutton{position:absolute;width: 50px;height: 50px;background-image:url(images/ico_movie_171115.png); border-radius: 50%;right:0;bottom:0;overflow: hidden; background-position: 0px -460px;}
+    </style>
+
+
+    <script type="text/javaScript">
+        // 왼버튼 클릭 시 왼쪽에 안보이던 그림이 하나씩 차례로 나타나게
+        // 오른버튼 클릭 시 오른쪽에 안보이던 그림이 하나씩 차례로 나타나게
+        // 왼쪽 오른쪽 버튼 모두 맨 끝 이미지를 보고 있다면 더 이상 이동하지 못하도록 move함수 제작
+        var imgNum=0;
+    function move(x){
+        if(x==1){
+            if( imgNum==7)return;//오른쪽 남은 이미지가 더 이상 없을 때 종료
+            imgNum++;
+    }else if(x==-1){
+            if( imgNum==0)return;//왼쪽 남은 이미지가 더 이상 없을 때 종료
+            imgNum--;
+    }
+        var dist = -600* imgNum;
+        document.getElementById("imgs").style.left = dist+"px";     
+    }
+
+    </script>
+</head>
+<body>
+    <div id="view">
+        <div id="imgs">
+            <img src="images/Koala.jpg"><img src="images/Chrysanthemum.jpg"><img src="images/Desert.jpg"><img src="images/Hydrangeas.jpg"><img src="images/Jellyfish.jpg"><img src="images/Lighthouse.jpg"><img src="images/Penguins.jpg"><img src="images/Tulips.jpg">
+        </div>
+
+        <div id="lbutton" onClick="move(-1);"></div>
+        <div id="rbutton"onClick="move(1);"></div>
+
+        <!-- <div id="lbutton" onClick="moveleft(-1);"></div>
+        <div id="rbutton"onClick="moveright(1);"></div> 
+        이렇게 하면 함수도 따로 만들어서 IF문 간단해짐_참고로 여기엔 함수추가 안함 분리만 하면 되니가-->
+    </div>
+</body>
+</html>

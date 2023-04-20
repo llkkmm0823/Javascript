@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>28_SelectTag.html</title>
+    <style type="text/css">
+        #title{position:relative;width: 200px;height: 30px; border: 1px solid gray; line-height: 30px; font-size: 120%; font-weight: bold;}
+        #num{position: absolute; top:0;left:0; width:120px;height: 30px;border: 1px dotted red;}
+
+        #arrow{position: absolute;width:25px;height: 30px;top:0;right:0;border: 1px dotted blue; background-image:url(images/ico_movie_171115.png); background-position: -275px -320px;overflow: hidden;}
+
+
+        #dropMenu{position: absolute;top:30px;left:0;background: white;width: 300px;height: 250px;border: 1px solid #EEEEEE;box-shadow: 2px 2px 5px gray;overflow-y: scroll;overflow-x: hidden;visibility: hidden;}/* 백그라운드 컬러 지정해주지 않으면 하얀색X 투명O */
+
+        #dropMenu div{position:relative; width: 100%; height: 45px; line-height: 45px; font-weight: bold;}
+        #dropMenu div:hover{background: #888888;color: white;}
+    </style>
+
+
+    <script type="text/javaScript">
+    var flag=false; // 현재 드롭메뉴가 보여지고 있는지 감춰진 상태인지 저장할 변수. 최조는 감춰진 상태
+
+function clickTitle(){
+    if(flag==true){
+        document.getElementById("dropMenu").style.visibility='hidden';
+        flag=false;
+    }else{
+        document.getElementById("dropMenu").style.visibility='visible';
+        flag=true;
+    }
+}
+
+
+function selectNum(num){
+    document.getElementById("num").innerHTML = num;
+}
+    </script>
+</head>
+<body>
+    <select>
+        <option>대한민국 +82</option>
+        <option>그리스 +30</option>
+        <option>뉴질랜드 +64</option>
+        <option>프랑스 +33</option>
+    </select>
+    <hr>
+
+
+    <div id ="title" onclick="clickTitle();"><!-- 외곽을 표시하며 전체를 감싸는 div-->
+
+        <div id="num">&nbsp;+82</div> <!-- 선택 내용 중 일부(+82)가 보여지는 div-->
+
+        <div id="arrow"></div><!-- 우측 아래화살표를 표시해주는 div -->
+
+        <div id="dropMenu">
+        <!-- 처음엔 보이지 않다가 표시내용 혹은 화살표 클릭시 나타나는 div(option box)-->
+            <div onclick="selectNum('+1');">+1 &nbsp;&nbsp;&nbsp; Canada</div>
+            <div onclick="selectNum('+63');">+63 &nbsp;&nbsp;&nbsp; Philippines</div>
+            <div onclick="selectNum('+62');">+62 &nbsp;&nbsp;&nbsp; Indonesia</div>
+            <div onclick="selectNum('+84');">+84 &nbsp;&nbsp;&nbsp; Vietnam</div>
+            <div onclick="selectNum('+55');">+55 &nbsp;&nbsp;&nbsp; Brazil</div>
+            <div onclick="selectNum('+86');">+86 &nbsp;&nbsp;&nbsp; China</div>
+            <div onclick="selectNum('+85');">+85 &nbsp;&nbsp;&nbsp; Hongkong</div>
+            <div onclick="selectNum('+82');">+82 &nbsp;&nbsp;&nbsp; Korea</div>
+        </div>
+    </div>
+    
+</body>
+</html>
